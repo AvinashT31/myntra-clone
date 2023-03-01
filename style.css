@@ -1018,8 +1018,16 @@ p {
 
 
 
+@media screen and (max-width:600px) {
+
+    
+    
+}
 
 
+
+
+/* 
 @media screen and (max-width:1270px) {
     .searchbar {
         width: 330px;
@@ -1031,7 +1039,6 @@ p {
 @media screen and (max-width:1024px) {
 
     .logo> :nth-child(2) ul {
-        /* border: 1px solid black; */
         font-size: 11px;
         padding-top: 10px;
         height: 20px;
@@ -1085,7 +1092,7 @@ p {
         font-size: 15px;
     }
 
-}
+} */
 
 
 @media screen and (max-width:912px){
