@@ -16,7 +16,7 @@ function Register(event){
 
    for(var i=0; i < DataFromLS.length; i++){
     if(DataFromLS[i].Email === UserEmail)
-    flag = true;
+       flag = true;
     }
 
     if(flag === true){
@@ -46,6 +46,8 @@ function Register(event){
         }
         
 }
+
+
 
 
 
