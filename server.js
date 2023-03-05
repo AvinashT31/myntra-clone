@@ -10,7 +10,7 @@ function Register(event){
 
     var Data = {Name: UserName, Number: UserNumber, Email: UserEmail, Password: UserPassword, ConfirmPassword: UserConfirmPassword}
 
-    var DataFromLS = JSON.parse(localStorage.getItem("DataList")) || [];
+    var DataFromLS = JSON.parse(localStorage.getItem("Myntra-Data")) || [];
    
     var flag = false;
 
@@ -35,7 +35,7 @@ function Register(event){
         else
          {
             DataFromLS.push(Data);
-            localStorage.setItem("DataList", JSON.stringify(DataFromLS));
+            localStorage.setItem("Myntra-Data", JSON.stringify(DataFromLS));
             // console.log(DataFromLS, "DataFromLS");
             document.getElementById("UserName").value = '';
             document.getElementById("UserNumber").value = '';
@@ -57,7 +57,7 @@ function login(event){
     var UserEmail = document.getElementById("UserEmail").value;
     var UserPassword = document.getElementById("UserPassword").value;
 
-    var DataFromLS = JSON.parse(localStorage.getItem("DataList"));
+    var DataFromLS = JSON.parse(localStorage.getItem("Myntra-Data"));
 
     var flag = false;
 
@@ -79,7 +79,70 @@ function login(event){
 
 }
 
+var GettingEmail;
 
+function forgetPassword(event){
+    // alert("working");
+    event.preventDefault();
+
+    var UserEmail = document.getElementById("UserEmail").value;
+    GettingEmail = UserEmail
+    console.log(UserEmail, "UserEmail");
+
+    var DataFromLS = JSON.parse(localStorage.getItem("Myntra-Data"));
+    console.log(DataFromLS, "DataFromLS");
+
+    var flag = false;
+    
+    for(var i=0; i < DataFromLS.length; i++){
+        if(DataFromLS[i].Email === GettingEmail){
+            flag = true;
+        }
+    }
+    console.log(GettingEmail, "GettingEmail")
+
+    if(flag=== true){
+
+        DivFromHTML = document.getElementById("Change");
+        console.log(DivFromHTML, "DivFromHTML");
+        var NewPassword = `<label>Enter New Pasword</label><input id="Password" type="password"><br><button onclick="NewPassword()">Set New Password</button>`
+        console.log(NewPassword, "NewPassword");
+         
+        DivFromHTML.innerHTML = NewPassword;
+        console.log(NewPassword, "NewPassword");
+       
+        alert("Set a new password")
+    }
+
+    else{
+        alert("please check your mail")
+    }
+
+}
+
+function NewPassword(){
+
+    alert("working")
+    var UserPassword = document.getElementById("Password").value;
+    console.log(UserPassword, "UserPassword");
+    
+    var DataFromLS = JSON.parse(localStorage.getItem("Myntra-Data"));
+    console.log(dataFromLS, "dataFromLS");
+
+    for(var i=0; i < DataFromLS.length; i++){
+        if(DataFromLS[i].Email === GettingEmail){
+            DataFromLS[i].Password = UserPassword;
+        }
+    }
+    console.log(DataFromLS, "DataFromLS");
+
+    localStorage.setItem("Myntra-Data", JSON.stringify(DataFromLS));
+    GettingEmail = '';
+    window.location.href = "/login.html";
+    alert("password Change Successfully");
+
+
+}
 
 
 
