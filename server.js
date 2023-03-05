@@ -87,7 +87,7 @@ function forgetPassword(event){
 
     var UserEmail = document.getElementById("UserEmail").value;
     GettingEmail = UserEmail
-    console.log(UserEmail, "UserEmail");
+    console.log(GettingEmail, "GettingEmail");
 
     var DataFromLS = JSON.parse(localStorage.getItem("Myntra-Data"));
     console.log(DataFromLS, "DataFromLS");
@@ -127,7 +127,7 @@ function NewPassword(){
     console.log(UserPassword, "UserPassword");
     
     var DataFromLS = JSON.parse(localStorage.getItem("Myntra-Data"));
-    console.log(dataFromLS, "dataFromLS");
+    console.log(DataFromLS, "DataFromLS");
 
     for(var i=0; i < DataFromLS.length; i++){
         if(DataFromLS[i].Email === GettingEmail){
