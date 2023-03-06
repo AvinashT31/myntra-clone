@@ -10,7 +10,7 @@ function Register(event){
 
     var Data = {Name: UserName, Number: UserNumber, Email: UserEmail, Password: UserPassword, ConfirmPassword: UserConfirmPassword}
 
-    var DataFromLS = JSON.parse(localStorage.getItem("Myntra-Data")) || [];
+    var DataFromLS = JSON.parse(localStorage.getItem("MyntraData")) || [];
    
     var flag = false;
 
@@ -35,7 +35,7 @@ function Register(event){
         else
          {
             DataFromLS.push(Data);
-            localStorage.setItem("Myntra-Data", JSON.stringify(DataFromLS));
+            localStorage.setItem("MyntraData", JSON.stringify(DataFromLS));
             // console.log(DataFromLS, "DataFromLS");
             document.getElementById("UserName").value = '';
             document.getElementById("UserNumber").value = '';
@@ -48,7 +48,6 @@ function Register(event){
 }
 
 
-
 function login(event){
 
     event.preventDefault();
@@ -57,7 +56,7 @@ function login(event){
     var UserEmail = document.getElementById("UserEmail").value;
     var UserPassword = document.getElementById("UserPassword").value;
 
-    var DataFromLS = JSON.parse(localStorage.getItem("Myntra-Data"));
+    var DataFromLS = JSON.parse(localStorage.getItem("MyntraData"));
 
     var flag = false;
 
@@ -71,13 +70,48 @@ function login(event){
         document.getElementById("UserEmail").value = '';
         document.getElementById("UserPassword").value = '';
         window.location.href = "index.html";
+        localStorage.setItem("cuurent-user", JSON.stringify(UserEmail));
         alert("login Successfully");
     }
     else{
         alert("please check your credential or create your account");
+        document.getElementById("UserEmail").value = '';
+        document.getElementById("UserPassword").value = '';
     }
 
 }
+
+
+
+// function login(event){
+
+//     event.preventDefault();
+//     // alert("Working");
+
+//     var UserEmail = document.getElementById("UserEmail").value;
+//     var UserPassword = document.getElementById("UserPassword").value;
+
+//     var DataFromLS = JSON.parse(localStorage.getItem("MyntraData"));
+
+//     var flag = false;
+
+//     for(var i=0; i < DataFromLS.length; i++){
+//         if(DataFromLS[i].Email === UserEmail && DataFromLS[i].Password === UserPassword){
+//             flag = true;
+//         }
+//     }
+
+//     if(flag === true){
+//         document.getElementById("UserEmail").value = '';
+//         document.getElementById("UserPassword").value = '';
+//         window.location.href = "index.html";
+//         alert("login Successfully");
+//     }
+//     else{
+//         alert("please check your credential or create your account");
+//     }
+
+// }
 
 var GettingEmail;
 
@@ -89,7 +123,7 @@ function forgetPassword(event){
     GettingEmail = UserEmail
     console.log(GettingEmail, "GettingEmail");
 
-    var DataFromLS = JSON.parse(localStorage.getItem("Myntra-Data"));
+    var DataFromLS = JSON.parse(localStorage.getItem("MyntraData"));
     console.log(DataFromLS, "DataFromLS");
 
     var flag = false;
@@ -126,7 +160,7 @@ function NewPassword(){
     var UserPassword = document.getElementById("Password").value;
     console.log(UserPassword, "UserPassword");
     
-    var DataFromLS = JSON.parse(localStorage.getItem("Myntra-Data"));
+    var DataFromLS = JSON.parse(localStorage.getItem("MyntraData"));
     console.log(DataFromLS, "DataFromLS");
 
     for(var i=0; i < DataFromLS.length; i++){
@@ -142,28 +176,6 @@ function NewPassword(){
     alert("password Change Successfully");
 
 
-}
-
-function AddTheProdcuts(event){
-
-    event.preventDefault();
-    // alert("Working");
-
-    var ProductImage = document.getElementById("Image").value;
-    var ProductName = document.getElementById("Name").value;
-    var ProductPrice = document.getElementById("Price").value;
-
-    var ProductData = {Image:ProductImage, Name:ProductName, Price:ProductPrice }
-    console.log(ProductData, "ProductData");
-
-    var DataFromLS = JSON.parse(localStorage.getItem("Myntra-Data")) || [];
-    DataFromLS.push(ProductData);
-    console.log(DataFromLS, "DataFromLS");
-    localStorage.setItem("Myntra-Data", JSON.stringify(DataFromLS)); 
-    alert("Product Added to the Website");
-    document.getElementById("Image").value = '';
-    document.getElementById("Name").value = '';
-    document.getElementById("Price").value = '';
 }
 
 
