@@ -69,9 +69,13 @@ function login(event){
     if(flag === true){
         document.getElementById("UserEmail").value = '';
         document.getElementById("UserPassword").value = '';
-        window.location.href = "index.html";
-        localStorage.setItem("cuurent-user", JSON.stringify(UserEmail));
+        
+        var User = {};
+        User["Current-user-email"] = UserEmail;
+        console.log(User, "User")
+        localStorage.setItem("current-user", JSON.stringify(User));
         alert("login Successfully");
+        window.location.href = "index.html";
     }
     else{
         alert("please check your credential or create your account");

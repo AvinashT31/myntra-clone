@@ -11,10 +11,10 @@ function AddTheProdcuts(event){
     var ProductData = {Image:ProductImage, Name:ProductName, Price:ProductPrice }
     console.log(ProductData, "ProductData");
 
-    var DataFromLS = JSON.parse(localStorage.getItem("Myntra-Data")) || [];
+    var DataFromLS = JSON.parse(localStorage.getItem("ProductData")) || [];
     DataFromLS.push(ProductData);
     console.log(DataFromLS, "DataFromLS");
-    localStorage.setItem("Myntra-Data", JSON.stringify(DataFromLS)); 
+    localStorage.setItem("ProductData", JSON.stringify(DataFromLS)); 
     alert("Product Added to the Website");
     document.getElementById("Image").value = '';
     document.getElementById("Name").value = '';

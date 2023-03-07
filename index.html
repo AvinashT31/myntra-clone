@@ -21,7 +21,7 @@
             </div>
             <div>
                 <ul>
-                    <li><a href="/Seller Panel/mens.html">MEN</a></li>
+                    <li><a href="mens.html">MEN</a></li>
                     <li><a href="blank">WOMEN</a></li>
                     <li><a href="blank">KIDS</a></li>
                     <li><a href="blank">HOME & LIVING</a></li>
@@ -42,6 +42,9 @@
                     <i class="fa-regular fa-user"></i>
                     <p>profile</p>
                 </a>
+            </div>
+            <div id="logout">
+
             </div>
             <div>
                 <i class="fa-solid fa-bag-shopping"></i>
@@ -360,6 +363,23 @@
         <img src="/img/web-screenshot-28-02-2023.jpg" alt="">
     </div>
     <script src="server.js"></script>
+    <script>
+        function check() {
+            var DataFromLS = JSON.parse(localStorage.getItem("current-user"));
+            if (DataFromLS) {
+                var divForlogout = document.getElementById("logout");
+                var logoutButton = `<button onclick = "logout()">logout</button>`
+                divForlogout.innerHTML = logoutButton;
+            }
+        }
+        check()
+
+        function logout(){
+            localStorage.removeItem("current-user");
+            window.location.reload();
+            alert("logout Successfully");
+        }
+    </script>
 </body>
 
 </html>
