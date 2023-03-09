@@ -365,7 +365,7 @@
     <script src="server.js"></script>
     <script>
         function check() {
-            var DataFromLS = JSON.parse(localStorage.getItem("current-user"));
+            var DataFromLS = JSON.parse(localStorage.getItem("current-user-myntra"));
             if (DataFromLS) {
                 var divForlogout = document.getElementById("logout");
                 var logoutButton = `<button onclick = "logout()">logout</button>`
@@ -375,7 +375,7 @@
         check()
 
         function logout(){
-            localStorage.removeItem("current-user");
+            localStorage.removeItem("current-user-myntra");
             window.location.reload();
             alert("logout Successfully");
         }

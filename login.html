@@ -34,7 +34,7 @@
                     </a>
                     <input type="Submit" value="Login">
                     <a href="register.html"><input style="text-align: center; cursor: pointer;" type="text"
-                    value="Create Your Account"></a>
+                            value="Create Your Account"></a>
                 </div>
             </form>
         </div>
@@ -42,15 +42,15 @@
 
     <script src="server.js"></script>
     <script>
-        window.onload = function(){
-            // alert("working");
-            var DataFromLS = json.parse(localStorage.getItem("current-user"));
-            if(DataFromLS){
+        window.onload = function () {
+            var DataFromLS = JSON.parse(localStorage.getItem("current-user-myntra"));
+            if (DataFromLS) {
                 window.location.href = "/index.html";
-                alert("Already Logged");
+                alert("already logged");
             }
         }
     </script>
+
 </body>
 
 </html>

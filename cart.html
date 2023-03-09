@@ -10,18 +10,89 @@
 
 <body>
     <h1>Cart</h1>
- 
-    <script>
-        window.onload = function (){
-            alert("working");
 
-            var DataFromLS = JSON.parse(localStorage.getItem("current-user"));
+    <div id="cartProducts">
+
+    </div>
+
+    <button onclick="buyProducts()">click here</button>
+
+
+
+    <script>
+
+        window.onload = function () {
+            // alert('working');
+            
+            var DataFromLS = JSON.parse(localStorage.getItem("current-user-myntra"));
             if(!DataFromLS){
                 window.location.href = "/login.html";
-                alert("cant access the cart without login");
+                alert("cant access the cart please login first");
+            }
+            else{
+                var DataFromLS = JSON.parse(localStorage.getItem("MyntraData"));
+                console.log(DataFromLS, "DataFromLS");
+
+                var currentUser = JSON.parse(localStorage.getItem("current-user-myntra"));
+                console.log(currentUser, "currentUser");
+
+                var divFromHtml = document.getElementById("cartProducts");
+                console.log(divFromHtml, "divFromHtml");
+
+                var cartProducts;
+
+                var flag = false
+
+                for(var i =0; i < DataFromLS.length; i++){
+                    if(DataFromLS[i].Email === currentUser["Current-user-email"] && DataFromLS[i].cartProducts){
+                        cartProducts = DataFromLS[i].cartProducts;
+                        console.log(cartProducts, "cartProducts")
+                        flag = true;
+                    }
+                }
+                if(flag === false){
+                    alert("No products added into cart");
+                }
+                else{
+                    console.log(cartProducts, "cartProducts");
+                    var productWithHtml = [];
+
+                    for(var i = 0; i < cartProducts.length; i++){
+                        productWithHtml += `<div><img src = "${cartProducts[i].image}"></img>
+                            <h4>${cartProducts[i].name}<h4><p>${cartProducts[i].price}</p></div>`
+                    }
+                    divFromHtml.innerHTML = productWithHtml;
+                }
             }
         }
+
+        function buyProducts(){
+            // alert("working");
+
+            var DataFromLS = JSON.parse(localStorage.getItem("MyntraData"));
+            var currentUser = JSON.parse(localStorage.getItem("current-user-myntra"));
+            
+            var updatedUser = [];
+
+            for(var i =0; i < DataFromLS.length; i++){
+                    if(DataFromLS[i].Email === currentUser["Current-user-email"] && DataFromLS[i].cartProducts){
+                        DataFromLS[i].cartProducts = [];
+                        updatedUser.push(DataFromLS[i]);
+                    }
+                    else{
+                        updatedUser.push(DataFromLS[i]);
+                    }
+                }
+
+                localStorage.setItem("MyntraData", JSON.stringify(updatedUser));
+                window.location.href = "/mens.html";
+                alert("product delivered soon");
+        }
+
     </script>
+
+
+    
 </body>
 
 </html>

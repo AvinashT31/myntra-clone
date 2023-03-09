@@ -52,14 +52,14 @@
 
     <script src="server.js"></script>
     <script>
-        window.onload = function(){
-            // alert("working");
-            var DataFromLS = json.parse(localStorage.getItem("current-user"));
-            if(DataFromLS){
+        window.onload = function () {
+            var DataFromLS = JSON.parse(localStorage.getItem("current-user-myntra"));
+            if (DataFromLS) {
                 window.location.href = "/index.html";
-                alert("Already Logged");
+                alert("already logged");
             }
         }
+    </script>
 </body>
 
 </html>

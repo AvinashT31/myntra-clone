@@ -73,7 +73,7 @@ function login(event){
         var User = {};
         User["Current-user-email"] = UserEmail;
         console.log(User, "User")
-        localStorage.setItem("current-user", JSON.stringify(User));
+        localStorage.setItem("current-user-myntra", JSON.stringify(User));
         alert("login Successfully");
         window.location.href = "index.html";
     }

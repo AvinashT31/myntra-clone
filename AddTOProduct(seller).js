@@ -1,22 +1,25 @@
-
-function AddTheProdcuts(event){
+function AddTheProduct(event){
 
     event.preventDefault();
     // alert("Working");
 
-    var ProductImage = document.getElementById("Image").value;
-    var ProductName = document.getElementById("Name").value;
-    var ProductPrice = document.getElementById("Price").value;
+    var proImage = document.getElementById("image").value;
+    var proName = document.getElementById("name").value;
+    var proPrice = document.getElementById("price").value;
 
-    var ProductData = {Image:ProductImage, Name:ProductName, Price:ProductPrice }
-    console.log(ProductData, "ProductData");
+    var product = {image:proImage, name:proName, price: proPrice}
+    console.log(product, "product");
 
-    var DataFromLS = JSON.parse(localStorage.getItem("ProductData")) || [];
-    DataFromLS.push(ProductData);
-    console.log(DataFromLS, "DataFromLS");
-    localStorage.setItem("ProductData", JSON.stringify(DataFromLS)); 
-    alert("Product Added to the Website");
-    document.getElementById("Image").value = '';
-    document.getElementById("Name").value = '';
-    document.getElementById("Price").value = '';
+    var dataFromLS = JSON.parse(localStorage.getItem("productMyntra")) || [];
+    dataFromLS.push(product);
+    console.log(dataFromLS, "dataFromLS");
+
+    localStorage.setItem("productMyntra", JSON.stringify(dataFromLS ));
+    
+    document.getElementById("image").value = '';
+    document.getElementById("name").value = '';
+    document.getElementById("price").value = '';
+    alert("product add to the website");
+
 }
+
